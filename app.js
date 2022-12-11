@@ -18,7 +18,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/notes", notesRouter);
+// app.use("/api/notes", notesRouter);
+app.use(`/.netlify/functions/api/notes`, notesRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.code || 500);
@@ -34,3 +35,6 @@ mongoose
     app.listen(5001);
   })
   .catch((err) => console.log(err));
+
+module.exports = app;
+module.exports.handler = serverless(app);
