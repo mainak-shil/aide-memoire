@@ -26,15 +26,19 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || `An unknown error occurred` });
 });
 
-mongoose
-  .connect(
-    `mongodb+srv://mainak:Nc5xNGU4GG5N4Hy7@cluster0.oixkfgt.mongodb.net/notes-app?retryWrites=true&w=majority`
-  )
-  .then(() => {
-    //! if conn success
-    app.listen(5001);
-  })
-  .catch((err) => console.log(err));
+mongoose.connect(
+  `mongodb+srv://mainak:Nc5xNGU4GG5N4Hy7@cluster0.oixkfgt.mongodb.net/notes-app?retryWrites=true&w=majority`
+);
+
+// mongoose
+//   .connect(
+//     `mongodb+srv://mainak:Nc5xNGU4GG5N4Hy7@cluster0.oixkfgt.mongodb.net/notes-app?retryWrites=true&w=majority`
+//   )
+//   .then(() => {
+//     //! if conn success
+//     app.listen(5001);
+//   })
+//   .catch((err) => console.log(err));
 
 module.exports = app;
 module.exports.handler = serverless(app);
