@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodos, saveAllTodos } from "./redux/reducer";
 import { useHttpClient } from "./shared/hooks/http-hook";
+import { APP_NAME } from "./shared/util/constants";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function App() {
         transition={{ type: "spring", duration: 0.5 }}
         whileHover={{ scale: 1.1 }}
       >
-        Todo App
+        {APP_NAME}
       </motion.h1>
       <motion.div
         initial={{ y: 1000 }}

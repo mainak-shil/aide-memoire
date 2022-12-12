@@ -77,12 +77,11 @@ const updateNote = async (req, res, next) => {
 const deleteNote = async (req, res, next) => {
   const { nid } = req.params;
   const note = await Note.findOne({ id: nid });
-  console.log("note", note);
   if (!note) {
     return next(new HttpError("Not able to find a note", 500));
   }
   try {
-    const note = await Note.remove({ id: nid });
+    await Note.deleteOne({ id: nid });
     res.status(200).json({
       msg: "Note deleted",
     });
