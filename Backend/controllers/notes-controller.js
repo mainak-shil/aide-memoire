@@ -6,7 +6,7 @@ const getAllNotes = async (req, res, next) => {
     const notes = await Note.find();
     res.status(200).json({
       msg: "All Notes",
-      notes: notes.map((notes) => notes.toObject({ getters: true })),
+      notes: notes?.map((notes) => notes.toObject({ getters: true })),
     });
   } catch (e) {
     console.log(e);

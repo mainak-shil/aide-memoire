@@ -19,11 +19,11 @@ const addTodoReducer = createSlice({
     },
     //remove todos
     removeTodos: (state, action) => {
-      return state.filter((item) => item?.id !== action.payload);
+      return state?.filter((item) => item?.id !== action.payload);
     },
     //update todos
     updateTodos: (state, action) => {
-      return state.map((todo) => {
+      return state?.map((todo) => {
         if (todo.id === action.payload.id) {
           return {
             ...todo,
@@ -35,7 +35,7 @@ const addTodoReducer = createSlice({
     },
     //completed
     completeTodos: (state, action) => {
-      return state.map((todo) => {
+      return state?.map((todo) => {
         if (todo.id === action.payload) {
           return {
             ...todo,

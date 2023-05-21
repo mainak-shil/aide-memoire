@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const notesRouter = require("./routes/notes-route");
+const notesRouterV1 = require("./routes/v1/notes-route");
 const app = express();
 app.use(bodyParser.json());
 
@@ -18,7 +18,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/notes", notesRouter);
+// app.use("/api/notes", notesRouter);
+server.use("/api/v1/notes", notesRouterV1);
 
 app.use((error, req, res, next) => {
   res.status(error.code || 500);
